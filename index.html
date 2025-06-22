@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-commerce - Premium Shopping Experience</title>
+    
+    <!-- Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/animations.css">
+</head>
+<body>
+    <!-- Animated Background -->
+    <div class="animated-background">
+        <div class="shadow-blob blob1"></div>
+        <div class="shadow-blob blob2"></div>
+        <div class="shadow-blob blob3"></div>
+        <div class="shadow-blob blob4"></div>
+        <div class="shadow-blob blob5"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg fixed-top glass-nav">
+        <div class="container-fluid">
+            <a class="navbar-brand fw-bold" href="#">
+                <i class="fas fa-bolt text-primary"></i> E-commerce
+            </a>
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#home">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#products">Products</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#features">Features</a>
+                    </li>
+                </ul>
+                
+                <div class="d-flex align-items-center gap-3">
+                    <!-- Search -->
+                    <div class="search-container">
+                        <input type="text" id="searchInput" class="form-control search-input" placeholder="Search products...">
+                        <i class="fas fa-search search-icon"></i>
+                    </div>
+                    
+                    <!-- Theme Toggle -->
+                    <button class="btn btn-outline-primary theme-toggle" id="themeToggle">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                    
+                    <!-- Auth Buttons -->
+                    <button class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#authModal" data-mode="signin">
+                        Sign In
+                    </button>
+                    <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#authModal" data-mode="signup">
+                        Sign Up
+                    </button>
+                    
+                    <!-- Cart -->
+                    <button class="btn btn-primary position-relative cart-btn" data-bs-toggle="offcanvas" data-bs-target="#cartOffcanvas">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger cart-count">
+                            0
+                        </span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-section">
+        <div class="container">
+            <div class="row align-items-center min-vh-100">
+                <div class="col-lg-6">
+                    <h1 class="display-3 fw-bold mb-4 text-gradient">
+                        Premium Shopping Experience
+                    </h1>
+                    <p class="lead mb-5">
+                        Discover curated collections of high-quality products with lightning-fast delivery and personalized shopping experience.
+                    </p>
+                    <button class="btn btn-primary btn-lg me-3 pulse-btn" onclick="scrollToProducts()">
+                        Shop Now <i class="fas fa-arrow-right ms-2"></i>
+                    </button>
+                </div>
+                <div class="col-lg-6">
+                    <div class="hero-image-container">
+                        <div class="floating-card">
+                            <i class="fas fa-shopping-bag fa-3x text-primary"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="features-section py-5">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-3 col-md-6">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <h5>Secure Checkout & Multiple Payment Options</h5>
+                        <p>Safe and secure payment processing with multiple payment methods for your convenience.</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-shipping-fast"></i>
+                        </div>
+                        <h5>Fast & Reliable Delivery</h5>
+                        <p>Lightning-fast delivery with real-time tracking and reliable shipping partners worldwide.</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-user-cog"></i>
+                        </div>
+                        <h5>Personalized Shopping</h5>
+                        <p>AI-powered recommendations tailored to your preferences and shopping history.</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-crown"></i>
+                        </div>
+                        <h5>Your Account, Your Control</h5>
+                        <p>Complete control over your account settings, orders, and personal information.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section id="products" class="products-section py-5">
+        <div class="container-fluid">
+            <div class="products-header mb-4">
+                <div class="d-flex justify-content-between align-items-center">
+                    <h3 class="mb-0">Products</h3>
+                    <div class="products-count">
+                        <span id="productsCount">0</span> products found
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Filters and Categories Bar -->
+            <div class="filters-bar mb-4">
+                <div class="row g-3">
+                    <!-- Categories -->
+                    <div class="col-lg-4 col-md-6">
+                        <h6 class="filter-title mb-2">Categories</h6>
+                        <div id="categoriesFilter" class="categories-horizontal">
+                            <!-- Categories will be loaded here -->
+                        </div>
+                    </div>
+                    
+                    <!-- Sort Options -->
+                    <div class="col-lg-3 col-md-6">
+                        <h6 class="filter-title mb-2">Sort By</h6>
+                        <select class="form-select" id="sortSelect">
+                            <option value="">Default</option>
+                            <option value="price-asc">Price: Low to High</option>
+                            <option value="price-desc">Price: High to Low</option>
+                            <option value="rating-desc">Rating: High to Low</option>
+                            <option value="title-asc">Name: A to Z</option>
+                            <option value="title-desc">Name: Z to A</option>
+                        </select>
+                    </div>
+                    
+                    <!-- Price Range -->
+                    <div class="col-lg-3 col-md-6">
+                        <h6 class="filter-title mb-2">Price Range</h6>
+                        <div class="d-flex gap-2">
+                            <input type="number" class="form-control" id="minPrice" placeholder="Min">
+                            <input type="number" class="form-control" id="maxPrice" placeholder="Max">
+                        </div>
+                    </div>
+                    
+                    <!-- Filter Actions -->
+                    <div class="col-lg-2 col-md-6">
+                        <h6 class="filter-title mb-2">&nbsp;</h6>
+                        <div class="d-flex gap-2">
+                            <button class="btn btn-primary" id="applyPriceFilter">Apply</button>
+                            <button class="btn btn-outline-danger" id="clearFilters">
+                                <i class="fas fa-times"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Products Grid -->
+            <div class="row">
+                <div class="col-12">
+                    
+                    <!-- Loading Spinner -->
+                    <div id="loadingSpinner" class="text-center py-5">
+                        <div class="spinner-border text-primary" role="status">
+                            <span class="visually-hidden">Loading...</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Products Grid -->
+                    <div class="row g-4" id="productsGrid">
+                        <!-- Products will be loaded here -->
+                    </div>
+                    
+                    <!-- Pagination -->
+                    <nav aria-label="Products pagination" class="mt-5">
+                        <ul class="pagination justify-content-center" id="pagination">
+                            <!-- Pagination will be loaded here -->
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Checkout Modal -->
+    <div class="modal fade" id="checkoutModal" tabindex="-1">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Checkout</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <div id="checkoutStep1" class="checkout-step">
+                        <h6 class="mb-3">Order Summary</h6>
+                        <div id="checkoutItems"></div>
+                        <hr>
+                        <div class="d-flex justify-content-between">
+                            <strong>Total: $<span id="checkoutTotal">0.00</span></strong>
+                        </div>
+                        <div class="mt-4">
+                            <button class="btn btn-primary w-100" id="proceedToPayment">
+                                Proceed to Payment
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div id="checkoutStep2" class="checkout-step d-none">
+                        <div class="text-center py-5">
+                            <div class="success-animation mb-4">
+                                <i class="fas fa-check-circle fa-5x text-success"></i>
+                            </div>
+                            <h4 class="text-success">Commande passée avec succès!</h4>
+                            <p class="text-muted">Your order has been placed successfully and will be processed soon.</p>
+                            <button class="btn btn-primary" data-bs-dismiss="modal">Continue Shopping</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- First Purchase Celebration Modal -->
+    <div class="modal fade" id="celebrationModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content celebration-modal">
+                <div class="modal-body text-center py-5">
+                    <div class="celebration-animation mb-4">
+                        <i class="fas fa-gift fa-4x text-primary"></i>
+                        <div class="confetti"></div>
+                    </div>
+                    <h4 class="text-primary mb-3">Congratulations!</h4>
+                    <p class="mb-4">You've added your first product to the cart! Welcome to our store!</p>
+                    <button class="btn btn-primary" data-bs-dismiss="modal">Continue Shopping</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Cart Offcanvas -->
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="cartOffcanvas">
+        <div class="offcanvas-header">
+            <h5 class="offcanvas-title cart-title" data-translate="cart.title">Shopping Cart</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+        </div>
+        <div class="offcanvas-body">
+            <div id="cartItems">
+                <!-- Cart items will be loaded here -->
+            </div>
+            <div class="cart-empty text-center py-5" id="cartEmpty">
+                <i class="fas fa-shopping-cart fa-3x text-muted mb-3"></i>
+                <p class="text-muted">Your cart is empty</p>
+            </div>
+        </div>
+        <div class="offcanvas-footer p-3 border-top">
+            <div class="cart-total mb-3">
+                <h5>Total: $<span id="cartTotal">0.00</span></h5>
+            </div>
+            <button class="btn btn-primary w-100" id="checkoutBtn" disabled data-bs-toggle="modal" data-bs-target="#checkoutModal">
+                <i class="fas fa-credit-card me-2"></i>
+                Checkout
+            </button>
+        </div>
+    </div>
+
+    <!-- Auth Modal -->
+    <div class="modal fade" id="authModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="authModalTitle">Sign In</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="authForm">
+                        <div class="mb-3" id="nameField" style="display: none;">
+                            <label for="name" class="form-label">Full Name</label>
+                            <input type="text" class="form-control" id="name" placeholder="Enter your full name">
+                        </div>
+                        <div class="mb-3">
+                    <label for="email" class="form-label">Email</label>
+                    <input
+                        type="email"
+                        class="form-control"
+                        id="email"
+                        name="email"
+                        placeholder="Enter your email"
+                        required
+                    >
+                    </div>
+                    <div class="mb-3">
+                    <label for="password" class="form-label">Password</label>
+                    <input
+                        type="password"
+                        class="form-control"
+                        id="password"
+                        name="password"
+                        placeholder="Enter your password"
+                        required
+                    >
+                    </div>
+
+                        <button type="submit" class="btn btn-primary w-100" id="authSubmitBtn">Sign In</button>
+                    </form>
+                    <div class="text-center mt-3">
+                        <span class="auth-switch-text">Don't have an account?</span>
+                        <button class="btn btn-link p-0 auth-switch-btn" id="authSwitchBtn">Sign Up</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Container -->
+    <div class="toast-container position-fixed bottom-0 end-0 p-3" id="toastContainer">
+        <!-- Toasts will be added here -->
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom Scripts -->
+    <script src="js/translations.js"></script>
+    <script src="js/cart.js"></script>
+    <script src="js/products.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
